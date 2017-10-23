@@ -4,12 +4,14 @@ import com.jhr.git.First.domain.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
 @Api(value = "Shop")
+@Slf4j
 public class TestController {
     @ApiOperation(value = "获取helloWorld", notes = "简单SpringMVC请求")
     @RequestMapping("/")
@@ -39,6 +41,14 @@ public class TestController {
         user1.setId(String.valueOf(id));
         user1.setUsername(user);
         return "success";
+    }
+
+    @ApiOperation(value = "测试前端json直接转换成bean")
+    @RequestMapping(value = "/lombok",method = RequestMethod.POST)
+    public String lombok(@RequestBody User user){
+        // logback 使用这种方式记录日志，lombok提供了默认的toString()方法
+        log.info("front send here {}",user);
+        return "sout";
     }
 
 
