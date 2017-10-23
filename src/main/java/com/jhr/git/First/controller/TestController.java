@@ -1,5 +1,6 @@
 package com.jhr.git.First.controller;
 
+import com.jhr.git.First.domain.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -34,8 +35,13 @@ public class TestController {
     @ApiOperation(value="更新用户详细信息", notes="根据url的id来指定更新对象，并根据传过来的user信息来更新用户详细信息")
     @RequestMapping(value="/{id}", method=RequestMethod.PUT)
     public String putUser(@PathVariable Long id, @RequestBody String user) {
+        User user1 = new User();
+        user1.setId(String.valueOf(id));
+        user1.setUsername(user);
         return "success";
     }
+
+
 
 
 }
