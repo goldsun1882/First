@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
-@Api(value = "user服务", description = "user服务描述", tags = "user服务标签")
+@Api(value = "TestAPI", description = "user服务描述", tags = "user服务标签")
 @Slf4j
 public class TestController {
 

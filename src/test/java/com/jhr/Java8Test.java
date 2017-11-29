@@ -1,10 +1,11 @@
-package com.jhr.git.First.test;
+package com.jhr;
 
-import io.swagger.models.auth.In;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -14,7 +15,9 @@ import java.util.stream.Collectors;
  * description: 测试java8的lambda
  */
 public class Java8Test {
-    public static void main(String[] args) {
+
+    @Test
+    public void test() {
         // java 8 runnable
         new Thread(() -> System.out.println("java 8 runnable")).start();
         // java8 foreach
@@ -31,7 +34,7 @@ public class Java8Test {
         testPerformance();
     }
 
-    private static void testPerformance() {
+    private void testPerformance() {
         long a = System.currentTimeMillis();
         System.out.println("prepare data begin====");
         List<Integer> src = new ArrayList<>();
@@ -44,7 +47,7 @@ public class Java8Test {
         runFor(src);
     }
 
-    private static void runFor(List<Integer> src) {
+    private void runFor(List<Integer> src) {
         System.out.println("run lambda begin====");
         long a = System.currentTimeMillis();
         double result = 0L;
@@ -55,7 +58,7 @@ public class Java8Test {
 
     }
 
-    private static void runForeach(List<Integer> src) {
+    private void runForeach(List<Integer> src) {
         System.out.println("run foreach begin====");
         long a = System.currentTimeMillis();
         double result = 0L;
@@ -68,14 +71,14 @@ public class Java8Test {
         System.out.println("run foreach end ,use " + (b - a));
     }
 
-    private static void testFilter() {
+    private void testFilter() {
         System.out.println("test filter ====");
         List<String> languages = Arrays.asList("Java", "Scala", "C++", "Haskell", "Lisp");
         List<String> now = languages.stream().filter(v -> v.startsWith("J")).collect(Collectors.toList());
         now.forEach(v -> System.out.println(v));
     }
 
-    private static void testPredicate() {
+    private void testPredicate() {
         List<String> languages = Arrays.asList("Java", "Scala", "C++", "Haskell", "Lisp");
 
         System.out.println("Languages which starts with J :");
@@ -94,11 +97,45 @@ public class Java8Test {
         // filter(languages, (str)->str.length() > 4);
     }
 
-    public static void filter(List<String> names, Predicate condition) {
+    public void filter(List<String> names, Predicate condition) {
         for (String name : names) {
             if (condition.test(name)) {
                 System.out.println(name + " ");
             }
+        }
+    }
+
+    @Test
+    public void testOptional() {
+        Optional<User> user = null;
+        String name = getUserName(user);
+        System.out.println(name);
+    }
+
+    public String getUserName(Optional<User> user) {
+        return user.map(user1 -> user1.getId())
+                .map(id -> id.toUpperCase())
+                .orElse(null);
+    }
+
+    class User {
+        private String userName;
+        private String id;
+
+        public String getUserName() {
+            return userName;
+        }
+
+        public void setUserName(String userName) {
+            this.userName = userName;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
         }
     }
 }
