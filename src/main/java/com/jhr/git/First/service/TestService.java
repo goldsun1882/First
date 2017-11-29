@@ -37,4 +37,8 @@ public class TestService {
     public User getUserByName(String username) {
         return testDAO.getUserByName(username);
     }
+
+    public void addDevFunction(){
+        System.out.println("this is dev branch");
+    }
 }

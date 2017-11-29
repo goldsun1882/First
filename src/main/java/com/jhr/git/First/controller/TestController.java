@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * @author Administrator
+ */
 @RestController
 @RequestMapping("/user")
 @Api(value = "TestAPI", description = "user服务描述", tags = "user服务标签")
@@ -72,6 +75,5 @@ public class TestController {
     public User getUserByName(@RequestParam String username) {
         return testService.getUserByName(username);
     }
-
 
 }
