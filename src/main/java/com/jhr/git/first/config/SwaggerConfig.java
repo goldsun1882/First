@@ -1,4 +1,4 @@
-package com.jhr.git.First.config;
+package com.jhr.git.first.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

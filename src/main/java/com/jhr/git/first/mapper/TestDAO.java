@@ -1,6 +1,6 @@
-package com.jhr.git.First.dao;
+package com.jhr.git.first.mapper;
 
-import com.jhr.git.First.domain.User;
+import com.jhr.git.first.vo.UserReq;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -16,26 +16,26 @@ import java.util.Optional;
 @Component
 @Slf4j
 public class TestDAO {
-    private List<User> list = new ArrayList<>();
+    private List<UserReq> list = new ArrayList<>();
 
     private TestDAO(){
         for (int i = 0; i < 109; i++) {
-            User user = new User();
-            user.setId("user" + i);
-            user.setUsername("userName" + i);
-            user.setPassword("9999");
-            list.add(user);
+            UserReq userReq = new UserReq();
+            userReq.setId("userReq" + i);
+            userReq.setUserName("userName" + i);
+            userReq.setPassword("9999");
+            list.add(userReq);
         }
     }
 
-    public List<User> listUser() {
+    public List<UserReq> listUser() {
         log.info("get user from db");
         return list;
     }
 
-    public User getUserByName(String username) {
+    public UserReq getUserByName(String username) {
         log.info("get user by name from db");
-        Optional<User> p = list.stream().filter(user -> user.getUsername().equals(username)).findFirst();
+        Optional<UserReq> p = list.stream().filter(userReq -> userReq.getUserName().equals(username)).findFirst();
         return p.orElse(null);
     }
 

@@ -1,4 +1,4 @@
-package com.jhr.git.First.config;
+package com.jhr.git.first.config;
 
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 /**
- * author: jinhuari
+ * @author jinhuari
  * date: 2017/11/28
  * description:
  */
@@ -17,7 +17,7 @@ public class SystemConfig implements EnvironmentAware {
     private static String serviceVersion;
     @Override
     public void setEnvironment(Environment environment) {
-        this.environment = environment;
+        SystemConfig.environment = environment;
     }
 
 

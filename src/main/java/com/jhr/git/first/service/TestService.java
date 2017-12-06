@@ -1,8 +1,7 @@
-package com.jhr.git.First.service;
+package com.jhr.git.first.service;
 
-import com.jhr.git.First.dao.TestDAO;
-import com.jhr.git.First.domain.User;
-import org.springframework.cache.annotation.CacheEvict;
+import com.jhr.git.first.vo.UserReq;
+import com.jhr.git.first.mapper.TestDAO;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * author: jinhuari
+ * @author: jinhuari
  * date: 2017/10/24
  * description:
  * 1. 同一个value上不允许有相同的key，即参数名相同的两个方法，大概存储格式应该是<value,<param+param,return>>。如无参数，key为0
@@ -24,7 +23,7 @@ public class TestService {
     private TestDAO testDAO;
 
     @Cacheable(value = "accountCache")
-    public List<User> listUser() {
+    public List<UserReq> listUser() {
         return testDAO.listUser();
     }
 
@@ -34,7 +33,7 @@ public class TestService {
     }
 
     @Cacheable(value = "accountCache")
-    public User getUserByName(String username) {
+    public UserReq getUserByName(String username) {
         return testDAO.getUserByName(username);
     }
 

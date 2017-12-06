@@ -1,7 +1,7 @@
-package com.jhr.git.First.controller;
+package com.jhr.git.first.controller;
 
-import com.jhr.git.First.domain.User;
-import com.jhr.git.First.service.TestService;
+import com.jhr.git.first.vo.UserReq;
+import com.jhr.git.first.service.TestService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -44,23 +44,23 @@ public class TestController {
     @ApiOperation(value = "更新用户详细信息", notes = "根据url的id来指定更新对象，并根据传过来的user信息来更新用户详细信息")
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public String putUser(@PathVariable Long id, @RequestBody String user) {
-        User user1 = new User();
-        user1.setId(String.valueOf(id));
-        user1.setUsername(user);
+        UserReq userReq1 = new UserReq();
+        userReq1.setId(String.valueOf(id));
+        userReq1.setUserName(user);
         return "success";
     }
 
     @ApiOperation(value = "测试前端json直接转换成bean")
     @RequestMapping(value = "/lombok", method = RequestMethod.POST)
-    public String lombok(@RequestBody User user, @RequestParam String token) {
+    public String lombok(@RequestBody UserReq userReq, @RequestParam String token) {
         // logback 使用这种方式记录日志，lombok提供了默认的toString()方法
-        log.info("front send here {}", user);
+        log.info("front send here {}", userReq);
         return "sout";
     }
 
     @ApiOperation(value = "用户列表查询")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public List<User> list() {
+    public List<UserReq> list() {
         return testService.listUser();
     }
 
@@ -72,7 +72,7 @@ public class TestController {
 
     @ApiOperation(value = "根据用户名查询")
     @RequestMapping(value = "/req", method = RequestMethod.GET)
-    public User getUserByName(@RequestParam String username) {
+    public UserReq getUserByName(@RequestParam String username) {
         return testService.getUserByName(username);
     }
 
