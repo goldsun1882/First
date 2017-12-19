@@ -30,4 +30,7 @@ public class UserReq implements Serializable{
 
     @ApiModelProperty(value = "招商flag", required = true)
     private Boolean flag;
+
+    @ApiModelProperty(value = "master添加版本号", required = true)
+    private String version;
 }
