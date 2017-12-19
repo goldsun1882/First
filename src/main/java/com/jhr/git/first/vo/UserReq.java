@@ -27,4 +27,7 @@ public class UserReq implements Serializable{
 
     @ApiModelProperty(value = "密码", required = true)
     private String password;
+
+    @ApiModelProperty(value = "银川分行价格", required = true)
+    private String money;
 }
