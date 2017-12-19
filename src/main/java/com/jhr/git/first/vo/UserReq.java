@@ -27,4 +27,7 @@ public class UserReq implements Serializable{
 
     @ApiModelProperty(value = "密码", required = true)
     private String password;
+
+    @ApiModelProperty(value = "master添加版本号", required = true)
+    private String version;
 }
